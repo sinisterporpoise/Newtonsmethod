@@ -1,0 +1,14 @@
+BODY {
+  background-color: #005544;
+}
+h2 {
+  text-align: center;
+  color: turquoise;
+}
+form {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 10px;
+  border: 7px solid;
+  padding: 10em;
+}

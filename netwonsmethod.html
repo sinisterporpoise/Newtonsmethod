@@ -1,0 +1,37 @@
+<!Doctype html>
+<html lang = "En">
+<head>
+  <meta charset = "UTF-8">
+  <title>Newton's Method Calculator</title>
+  <link rel = "stylesheet" href = "newtonsmethod.css">
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <h2>Newton's Method Calculator</h2>
+      <form id="info">
+        <label>Initial Value:</label>
+        <input type="text" size="20" id="ivalue" name="ivalue">
+        <br><br>
+        <label>Equation:</label>
+        <input type="text" size="20" name="eqvalue" id="eqvalue">
+        <br>
+        <br>
+        <label>Derivative:</label>
+        <input type="text" isize="20" id="dvalue"   name="dvalue"><br><br>
+        <button id="calculate">Calculate</button>
+        <div id="answer">
+          <h3>The answer is:</h3>
+          <p id="inneranswer">
+          <p></p>
+        </div>
+        <!--End Inner Answer  -->
+      </form>
+
+    </div> <!-- End Answer -->
+  </div><!-- End Header -->
+  <script src = "newtonsmethod.js"></script>
+</body>
+
+</html>
