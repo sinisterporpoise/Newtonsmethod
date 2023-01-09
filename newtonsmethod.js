@@ -6,17 +6,17 @@
 
 var calculate = document.getElementById('calculate');
 
-//---------------------------------------------------------
+//-------------------------------------------------------------
 //
 // We only heed to conver the strings into their intial values
 // here
+//
+//---------------------------------------------------------------
 
 function calc( fivalue, feqvalue, fdvalue) {	
-	console.log(fivalue);
-	console.log(feqvalue);
-	console.log (fdvalue);
-    var answer = eval(fivalue) - (eval(feqvalue)/eval(fdvalue));			// This is the starting value
-	console.log('First answer is: ', answer);
+	
+	
+    	var answer = Function("return " + fivalue) - (Function("return " + feqvalue)/Function("return " + fdvalue));			// This is the starting value
 
 	var  z = 1;
 	
@@ -45,7 +45,7 @@ function calc( fivalue, feqvalue, fdvalue) {
 		  fdvalue = fdvalue.replace(/[Xx]/g, answer);	
 
 		  // Do the calculation
-		  var answer = eval(answer) - (eval(feqvalue)/eval(fdvalue));
+		  var answer = Function("return " + answer) - (Function("return " + feqvalue)/Function("return " + fdvalue));
 
 		  console.log ('Debugging information')
 		  console.log('New Equation Value is: ', feqvalue);
