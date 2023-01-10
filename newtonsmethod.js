@@ -1,3 +1,4 @@
+
 // This will get the relevant values
 // from the HTMl page, convert the
 // expressions into equations and
@@ -15,10 +16,19 @@ var calculate = document.getElementById('calculate');
 
 function calc( fivalue, feqvalue, fdvalue) {	
 	
+	let fivalue2 =  parseInt(fivalue);
+	let feqvalue2 = Function("return " + feqvalue)();
+	let fdvalue2 = Function("return " + fdvalue)();
+	let answers = []
 	
-    	var answer = Function("return " + fivalue) - (Function("return " + feqvalue)/Function("return " + fdvalue));			// This is the starting value
-
+	
+    	var answer = fivalue2 - (feqvalue2 / fdvalue2)		// This is the starting value
+    
+	
 	var  z = 1;
+	
+	// Store the result in an array and subtract z by one for the index value
+	answers[z-1] = answer;
 	
 
 	// Let's start this whole thing
@@ -33,31 +43,48 @@ function calc( fivalue, feqvalue, fdvalue) {
 		  fdvalue = "";
 		  feqvalue = document.getElementById('eqvalue').value;
 		  fdvalue = document.getElementById('dvalue').value;
+		  
+		  
 		  // Make sure that we replace it for polynomials that take the form of 5x**2
 		  feqvalue = feqvalue.replace(/(-?[0-9]*)[Xx]/g, "$1*" + '(' + answer + ')');
 		  feqvalue = feqvalue.replace(/\+\s*\*/g, "+");
 		  fdvalue = fdvalue.replace(/(-?[0-9]*)[Xx]/g, "$1*" + '(' + answer + ')');
 		  fdvalue = fdvalue.replace(/\+\s*\*/g, "+");
 	
+
 	
 		  // Now do the same for naked polynoials like x^2 + x + 3
 		  feqvalue = feqvalue.replace(/[Xx]/g, answer);
 		  fdvalue = fdvalue.replace(/[Xx]/g, answer);	
 
+			
 		  // Do the calculation
-		  var answer = Function("return " + answer) - (Function("return " + feqvalue)/Function("return " + fdvalue));
+		  feqvalue2 = Function("return " + feqvalue)();
+		  fdvalue2 = Function("return " + fdvalue)();
+		  answer = answer - (feqvalue2 / fdvalue2);
+		  answers[z-1] = answer;
+		  console.log(answer);
+		  
+		  feqvalue2 = 0;
+		  fdvalue2 = 0;
 
-		  console.log ('Debugging information')
-		  console.log('New Equation Value is: ', feqvalue);
-		  console.log('New Derivative Value is: ',fdvalue);
-		  console.log('Answer is', answer);
-
-		  outputstr = "<p>Iteration " + z + " is : " + answer + "</p>";
-		  document.getElementById("answer").innerHTML = outputstr;
+		 
 		  z++;
+		  
+		  
+		
   }
 
-	
+	  // Now let's write everyting out
+	  	   newstr = "<br><br><br><table>";
+	  	  
+	  	  
+	  	   for (z = 1; z <= 10; z++) {
+		      newstr += "<tr><td>Iteration " + z + " is :</td><td> " + answers[z-1] + "</td></tr>";
+		   	
+		   }
+		  outputstr = newstr;
+		  document.getElementById("answer").innerHTML = outputstr + "</table>";
 } // End Calc function
   
   
