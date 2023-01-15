@@ -110,8 +110,8 @@ function Newtons_Method(e) {
 	dvalue = dvalue.replace(/\+\s*\*/g, "+");
 	
 	// Now do the same for naked polynoials like x^2 + x + 3
-	eqvalue = eqvalue.replace(/[Xx]/g, ivalue);
-	dvalue = dvalue.replace(/[Xx]/g, ivalue);
+	eqvalue = eqvalue.replace(/^[Xx]/g, ivalue);
+	dvalue = dvalue.replace(/^[Xx]/g, ivalue);
 	
     calc (ivalue, eqvalue, dvalue)
 }
